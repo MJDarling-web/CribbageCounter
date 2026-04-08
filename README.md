@@ -1,6 +1,7 @@
 # Cribbage Counter (Java, Local Storage)
 
 A Java web app for tracking cribbage games locally with score history and exactly 2 players per game.
+https://cribbagecounter.onrender.com
 
 ## Features
 
@@ -15,6 +16,8 @@ A Java web app for tracking cribbage games locally with score history and exactl
 - Java 11
 - Javalin (web server)
 - Maven
+- Copilot (code generation)
+- Render (deployment)
 
 ## Setup
 
