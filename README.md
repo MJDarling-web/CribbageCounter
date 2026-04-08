@@ -1,18 +1,18 @@
 # Cribbage Counter (Java, Local Storage)
 
-A Java web app for tracking cribbage games with login, score history, and 2-4 players per game.
+A Java web app for tracking cribbage games locally with score history and exactly 2 players per game.
 
 ## Features
 
-- Account registration and login (username/password, hashed with BCrypt)
-- Local file persistence for users, games, score events, and **wins/losses**
-- Create new games with **2-4 unique players**
+- No login required
+- Local file persistence for games, score events, and player-name **wins/losses**
+- Create new games with exactly **2 players**
 - Live scoreboard updates by adding score events
 - Finish a game and store winner/loser records locally
 
 ## Tech Stack
 
-- Java 17
+- Java 11
 - Javalin (web server)
 - Maven
 
@@ -64,8 +64,8 @@ Your game/user stats persist on the disk across deploys and restarts.
 
 All data is stored on disk in one local file (`data/local-store.ser` by default):
 
-- users (with wins/losses)
 - games
 - score events
+- player-name stats (wins/losses)
 
 If you want a fresh start, stop the app and delete the data file.

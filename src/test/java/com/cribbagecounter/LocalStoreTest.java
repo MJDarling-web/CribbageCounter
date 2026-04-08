@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LocalStoreTest {
 
@@ -17,10 +16,8 @@ class LocalStoreTest {
         Path tempFile = Files.createTempFile("cribbage-store", ".ser");
         try {
             LocalStore store = new LocalStore(tempFile);
-            store.createUser("alice", "hash");
-            store.createUser("bob", "hash");
 
-            UUID gameId = store.createGame(UUID.randomUUID(), List.of("alice", "bob"));
+            UUID gameId = store.createGame("alice", "bob");
             store.finishGame(gameId, "alice");
 
             List<LocalStore.UserStats> stats = store.leaderboard();
@@ -31,10 +28,9 @@ class LocalStoreTest {
             assertEquals(0, alice.losses());
             assertEquals(0, bob.wins());
             assertEquals(1, bob.losses());
-            assertTrue(store.getGameView(gameId).status().equals("finished"));
+            assertEquals("finished", store.getGameView(gameId).status());
         } finally {
             Files.deleteIfExists(tempFile);
         }
     }
 }
-
