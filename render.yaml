@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: cribbage-counter
+    runtime: docker
+    plan: starter
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: DATA_FILE
+        value: /var/data/local-store.ser
+    disk:
+      name: cribbage-data
+      mountPath: /var/data
+      sizeGB: 1
+
